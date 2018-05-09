@@ -3,6 +3,8 @@
 
 #include "stdafx.h"
 
+using namespace std;
+
 struct Info {
 	BYTE size;
 	BYTE instructions[16];
@@ -18,6 +20,7 @@ int main()
 	HANDLE fileResult = CreateFileA("decrypted.bin", GENERIC_WRITE, TRUE, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
 
 	if (file == INVALID_HANDLE_VALUE || fileResult == INVALID_HANDLE_VALUE) {
+		cout << "[-] Error opening files" << endl;
 		ExitProcess(-1);
 	}
 
@@ -42,7 +45,6 @@ int main()
 	CloseHandle(file);
 	CloseHandle(fileResult);
 
-	ExitProcess(0);
     return 0;
 }
 
